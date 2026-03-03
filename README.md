@@ -1,12 +1,14 @@
 # Kingst LA Series — sigrok Firmware Tool
 
-Use your **Kingst logic analyzer** with **sigrok**, **sigrok-cli**, **PulseView**, and **AI assistants** on Linux.
+Use your **Kingst logic analyzer** with **sigrok-cli** on Linux. PulseView GUI support is experimental.
 
 Includes an **MCP server** so AI tools (Windsurf, Claude Desktop, Cursor) can directly trigger captures, decode protocols, and analyze logic signals.
 
 Supports the full Kingst LA lineup: LA1010, LA1010A, LA1016, LA2016, LA5016, LA5032, and MS6218.
 
 Kingst devices require proprietary firmware to be uploaded on each connection. This tool extracts that firmware from the free KingstVIS application so sigrok can load it automatically.
+
+> **Note:** Currently this setup works reliably with `sigrok-cli`. PulseView GUI compatibility is being investigated - see [Troubleshooting](#troubleshooting) for details.
 
 ---
 
@@ -200,6 +202,11 @@ The macOS binary is also supported via `__TEXT __const` section parsing. However
 
 **`Unexpected run state` warning**
 - This is normal on first use after device enumeration. The device still works.
+
+**PulseView shows "Exception: invalid argument" or crashes**
+- This is a known compatibility issue between the custom libsigrok build and packaged PulseView
+- Use `sigrok-cli` instead which works reliably: `./kingst-cli --scan`
+- To view captures graphically, save with `sigrok-cli` then open the `.sr` file in PulseView on another machine
 
 ---
 
