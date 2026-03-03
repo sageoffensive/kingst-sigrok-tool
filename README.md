@@ -130,6 +130,24 @@ The macOS KingstVIS binary is also supported as a fallback, but the Linux binary
 
 ### Step 3 — Capture signals
 
+Use the provided `kingst-cli` wrapper (hardcodes the driver for you):
+
+```bash
+# Scan for device (plug in first)
+./kingst-cli --scan
+
+# Capture 1 second at 10MHz on channels CH0 and CH1
+./kingst-cli --config samplerate=10m \
+           --channels CH0,CH1 --time 1s -o capture.sr
+
+# Decode UART at 115200 baud
+./kingst-cli --config samplerate=1m \
+           --channels CH0 --time 5s \
+           --protocol-decoder uart:rx=CH0:baudrate=115200
+```
+
+Or use `sigrok-cli` directly with `--driver kingst-la2016`:
+
 ```bash
 # Scan for device (plug in first)
 sigrok-cli --driver kingst-la2016 --scan

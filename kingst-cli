@@ -1,0 +1,13 @@
+#!/bin/bash
+# Kingst LA series wrapper for sigrok-cli
+# Hardcodes the kingst-la2016 driver so you don't need to specify it
+
+DRIVER="kingst-la2016"
+
+# If first arg is --scan, --list-supported, etc., just run with driver
+if [[ "$1" == "--scan" ]] || [[ "$1" == "--list-supported" ]] || [[ "$1" == "-V" ]] || [[ "$1" == "--version" ]]; then
+    sigrok-cli --driver "$DRIVER" "$@"
+else
+    # For all other commands, pass through with driver hardcoded
+    sigrok-cli --driver "$DRIVER" "$@"
+fi
