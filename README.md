@@ -14,7 +14,7 @@ Kingst devices require proprietary firmware to be uploaded on each connection. T
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/AnotherWayIn/kingst-sigrok-tool.git
+git clone https://github.com/sageoffensive/kingst-sigrok-tool.git
 cd kingst-sigrok-tool
 
 # 2. Build and install the official sigrok libsigrok
