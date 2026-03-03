@@ -26,7 +26,7 @@ tar -xzf /tmp/KingstVIS_linux.tar.gz -C /tmp
 python3 extract_firmware.py /tmp/KingstVIS/KingstVIS
 
 # 4. Plug in your device and test
-sigrok-cli --driver kingst-la2016 --scan
+./kingst-cli --scan
 ```
 
 Expected output:
